@@ -1,0 +1,21 @@
+[Unit]
+Description=ICT Trading Bot
+After=network.target
+
+[Service]
+Type=simple
+User=ictbot
+WorkingDirectory=/opt/ict-bot
+Environment=BINANCE_API_KEY=your_api_key
+Environment=BINANCE_SECRET=your_secret
+Environment=USE_SANDBOX=true
+Environment=TELEGRAM_BOT_TOKEN=your_token
+Environment=TELEGRAM_CHAT_ID=your_chat_id
+ExecStart=/usr/bin/python3 /opt/ict-bot/app.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
